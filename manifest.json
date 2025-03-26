@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "JD Cover Letter Helper",
+    "version": "1.0",
+    "description": "Auto-detect job descriptions and generate cover letters.",
+    "permissions": ["scripting", "activeTab", "storage"],
+    "host_permissions": [
+      "https://*.linkedin.com/*",
+      "https://*.seek.com.au/*",
+      "https://*.indeed.com/*"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://*.linkedin.com/*",
+          "https://*.seek.com.au/*",
+          "https://*.indeed.com/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  

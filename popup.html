@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Cover Letter Generator</title></head>
+  <body>
+    <h3>Generate Cover Letter</h3>
+    <button id="generateBtn">Generate</button>
+    <pre id="result" style="white-space: pre-wrap;"></pre>
+    <script>
+      document.getElementById('generateBtn').onclick = async () => {
+        const { jdText } = await chrome.storage.local.get(['jdText']);
+        const resume = {
+          name: "张一鑫",
+          education: "Master of IT, UQ 2023",
+          experience: "6 months as software dev at current company",
+          skills: "Python, FastAPI, React Native",
+          projects: "Citrus YOLOv5, Impact-Portal, Playgrounds"
+        };
+        const res = await fetch("http://localhost:8000/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ job_description: jdText, resume })
+        });
+        const data = await res.json();
+        document.getElementById("result").textContent = data.cover_letter;
+      };
+    </script>
+  </body>
+</html>
