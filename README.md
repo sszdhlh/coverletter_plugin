@@ -1,23 +1,3 @@
-你遇到的错误提示是：
-
-```
-Error in user YAML: (<unknown>): found character that cannot start any token while scanning for the next token at line 1 column 1
-```
-
-这是因为你试图将整个 Markdown 内容（含 `markdown` 代码块语法 ```markdown）复制进了 GitHub 上某个 YAML 格式的地方（比如 GitHub Actions、`.github/workflows/*.yml`、或者其他 `.yml` 文件中），YAML 不支持这种 Markdown 风格的代码块，会报错。
-
----
-
-### ✅ 解决方法：
-
-你只需要**去掉外层的 Markdown 标记**（最上面的 ```markdown 和最后的 ```）再粘贴就可以正常用在 `README.md` 文件中。
-
----
-
-### ✂️ 修正版本（适用于 GitHub README.md）：
-
-你现在复制下面这一整段就不会报错了👇
-
 ---
 
 # 🧠 JD Cover Letter Generator Chrome Extension
@@ -104,4 +84,3 @@ MIT License © 2025 Yixin Zhang (Charles Zhang)
 
 ---
 
-如果你还需要我帮你生成 `LICENSE` 文件、或者一键部署 GitHub Pages 或部署文档，也可以继续说～
